@@ -38,4 +38,4 @@ services:
 
 volumes:
     afstore:
-        driver: rancher-nfs
+        driver: rancher-ebs
