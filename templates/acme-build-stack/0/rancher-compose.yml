@@ -1,8 +1,8 @@
 .catalog:
-  name: "ACME Build"
+  name: "Artifactory"
   version: "v1.0"
-  description: "ACME build stack"
-  uuid: acme-build-stack-0
+  description: "Artifactory build stack"
+  uuid: artifactory-stack-0
   questions:
     - variable: "artifactory_port"
       description: "Artifactory port to expose"
