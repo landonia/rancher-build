@@ -8,7 +8,7 @@
       description: "Artifactory port to expose"
       label: "Port:"
       required: true
-      default: "80"
+      default: "8081"
       type: "int"
 version: '2'
 services:
