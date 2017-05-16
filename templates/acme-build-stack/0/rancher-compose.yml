@@ -1,5 +1,5 @@
 .catalog:
-  name: "acme-build-stack"
+  name: "ACME Build"
   version: "v1.0"
   description: "ACME build stack"
   uuid: acme-build-stack-0
