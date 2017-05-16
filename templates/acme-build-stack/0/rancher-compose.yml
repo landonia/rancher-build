@@ -38,3 +38,6 @@ services:
 volumes:
     afstore:
         driver: rancher-ebs
+        driver_opts:
+            name: artifactory
+            size: 100
