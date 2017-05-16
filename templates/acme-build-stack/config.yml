@@ -1,4 +1,4 @@
-name: "ACME - Artifactory build stack"
-description: "Create an ACME artifactory repository environment"
+name: "Artifactory"
+description: "Create an artifactory repository environment"
 version: "v1.0"
-category: "ACME"
+category: "Build services"
