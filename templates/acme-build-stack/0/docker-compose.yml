@@ -14,3 +14,12 @@ services:
         tty: true
         labels:
             io.rancher.container.pull_image: always
+        volumes:
+            - afstore:/var/opt/jfrog/artifactory
+
+volumes:
+    afstore:
+        driver: rancher-ebs
+        driver_opts:
+            name: artifactory
+            size: 100

@@ -15,8 +15,6 @@ services:
   artifactory:
     scale: 1
     start_on_create: true
-    volumes:
-        - afstore:/var/opt/jfrog/artifactory
   aflb:
     scale: 1
     start_on_create: true
@@ -35,9 +33,3 @@ services:
       unhealthy_threshold: 3
       interval: 2000
 
-volumes:
-    afstore:
-        driver: rancher-ebs
-        driver_opts:
-            name: artifactory
-            size: 100
