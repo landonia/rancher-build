@@ -1,0 +1,41 @@
+.catalog:
+  name: "acme-build-stack"
+  version: "v1.0"
+  description: "ACME build stack"
+  uuid: acme-build-stack-0
+  questions:
+    - variable: "artifactory_port"
+      description: "Artifactory port to expose"
+      label: "Port:"
+      required: true
+      default: "80"
+      type: "int"
+version: '2'
+services:
+  artifactory:
+    scale: 1
+    start_on_create: true
+    volumes:
+        - afstore:/var/opt/jfrog/artifactory
+  aflb:
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: artifactory
+        source_port: ${artifactory_port}
+        target_port: 8081
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+
+volumes:
+    afstore:
+        driver: rancher-nfs
