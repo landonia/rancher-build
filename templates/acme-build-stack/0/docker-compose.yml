@@ -1,6 +1,6 @@
 version: '2'
 services:
-    aflb:
+    pub:
         image: rancher/lb-service-haproxy:v0.6.4
         ports:
             - ${artifactory_port}:${artifactory_port}/tcp

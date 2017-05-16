@@ -15,7 +15,7 @@ services:
   artifactory:
     scale: 1
     start_on_create: true
-  aflb:
+  pub:
     scale: 1
     start_on_create: true
     lb_config:
