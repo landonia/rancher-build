@@ -11,6 +11,6 @@ services:
     artifactory:
         image: docker.bintray.io/jfrog/artifactory-oss:latest
         stdin_open: true
-        tty: true:
+        tty: true
         labels:
             io.rancher.container.pull_image: always
