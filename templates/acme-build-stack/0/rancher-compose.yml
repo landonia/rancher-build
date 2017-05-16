@@ -12,30 +12,27 @@
       type: "int"
 version: '2'
 services:
-  artifactory:
-    scale: 1
-    start_on_create: true
-    volumes:
-        - afstore:/var/opt/jfrog/artifactory
-  aflb:
-    start_on_create: true
-    lb_config:
-      certs: []
-      port_rules:
-      - priority: 1
-        protocol: http
-        service: artifactory
-        source_port: ${artifactory_port}
-        target_port: 8081
-    health_check:
-      response_timeout: 2000
-      healthy_threshold: 2
-      port: 42
-      unhealthy_threshold: 3
-      initializing_timeout: 60000
-      interval: 2000
-      reinitializing_timeout: 60000
+    artifactory:
+        scale: 1
+        volumes:
+            - afstore:/var/opt/jfrog/artifactory
+    loadbalancer:
+        scale: 1
+        lb_config:
+            port_rules:
+                - protocol: http
+                  service: artifactory
+                  source_port: ${artifactory_port}
+                  target_port: 8081
+        health_check:
+            port: 42
+            interval: 2000
+            unhealthy_threshold: 3
+            healthy_threshold: 2
+            response_timeout: 2000
 
 volumes:
     afstore:
-        driver: rancher-nfs
+        driver: rancher-ebs
+            driver_opts:
+                size: 10

@@ -1,13 +1,9 @@
 version: '2'
 services:
-    aflb:
-        image: rancher/lb-service-haproxy:v0.7.1
+    loadbalancer:
+        image: rancher/lb-service-haproxy:v0.6.4
         ports:
             - ${artifactory_port}:${artifactory_port}/tcp
-        labels:
-            io.rancher.container.agent.role: environmentAdmin
-            io.rancher.container.create_agent: 'true'
-            io.rancher.scheduler.global: 'true'
     artifactory:
         image: docker.bintray.io/jfrog/artifactory-oss:latest
         stdin_open: true
