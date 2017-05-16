@@ -1,8 +1,8 @@
 .catalog:
-  name: "ACME Build"
+  name: "Artifactory"
   version: "v1.0"
-  description: "ACME build stack"
-  uuid: acme-build-stack-0
+  description: "Artifactory build stack"
+  uuid: artifactory-build-stack-0
   questions:
     - variable: "artifactory_port"
       description: "Artifactory port to expose"
@@ -20,10 +20,10 @@ services:
         scale: 1
         lb_config:
             port_rules:
-                - protocol: http
-                  service: artifactory
-                  source_port: ${artifactory_port}
-                  target_port: 8081
+            - source_port: ${artifactory_port}
+              target_port: 8081
+              protocol: http
+              service: artifactory
         health_check:
             port: 42
             interval: 2000
