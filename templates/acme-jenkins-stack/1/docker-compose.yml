@@ -1,0 +1,37 @@
+version: '2'
+services:
+    pub:
+        image: rancher/lb-service-haproxy:v0.6.4
+        ports:
+            - ${jenkins_port}:${jenkins_port}/tcp
+        labels:
+            io.rancher.container.agent.role: environmentAdmin
+            io.rancher.container.create_agent: 'true'
+            io.rancher.scheduler.global: 'true'
+    jenkins:
+        image: jenkins:2.46.2
+        stdin_open: true
+        tty: true
+        labels:
+            io.rancher.sidekicks: jenkins-plugins,jenkins-datavolume
+            io.rancher.container.hostname_override: container_name
+        volumes_from:
+            - jenkins-plugins
+            - jenkins-datavolume
+        entrypoint: /usr/share/jenkins/rancher/jenkins.sh
+    jenkins-plugins:
+        image: rancher/jenkins-plugins:v0.1.1
+    jenkins-datavolume:
+        image: busybox
+        volumes:
+            - jstore:/var/jenkins_home
+        labels:
+            io.rancher.container.start_once: true
+        entrypoint: ["chown", "-R", "1000:1000", "/var/jenkins_home"]
+
+volumes:
+    jstore:
+        driver: rancher-ebs
+        driver_opts:
+            name: jenkins
+            size: 20

@@ -1,0 +1,35 @@
+.catalog:
+  name: "Jenkins"
+  version: "v1.1"
+  description: "Jenkins build stack"
+  uuid: jenkins-stack-1
+  questions:
+    - variable: "jenkins_port"
+      description: "Jenkins public port"
+      label: "Port:"
+      required: true
+      default: "8080"
+      type: "int"
+version: '2'
+services:
+  jenkins:
+    scale: 1
+    start_on_create: true
+  pub:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: jenkins
+        source_port: ${jenkins_port}
+        target_port: 8080
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      interval: 2000
+
