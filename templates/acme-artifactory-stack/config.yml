@@ -1,4 +1,4 @@
-name: "Artifactory"
-description: "Create an artifactory repository environment"
+name: "ACME Artifactory Pro"
+description: "Create an Artifactory Pro repository environment"
 version: "v1.0"
 category: "Build services"
