@@ -9,7 +9,7 @@ services:
             io.rancher.container.create_agent: 'true'
             io.rancher.scheduler.global: 'true'
     artifactory:
-        image: docker.bintray.io/jfrog/artifactory-oss:latest
+        image: docker.bintray.io/jfrog/artifactory-pro:latest
         stdin_open: true
         tty: true
         labels:
