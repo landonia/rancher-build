@@ -1,0 +1,4 @@
+name: "Jenkins"
+description: "Create a Jenkins continuous build server"
+version: "v1.0"
+category: "Build services"
