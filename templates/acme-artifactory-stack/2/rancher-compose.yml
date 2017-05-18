@@ -1,0 +1,21 @@
+.catalog:
+  name: "Artifactory"
+  version: "v1.2"
+  description: "Artifactory build stack"
+  uuid: artifactory-stack-2
+  questions:
+    - variable: "certvolume"
+      description: "The name of the volume containing the certificates"
+      label: "Certificate Volume:"
+      required: true
+      default: ""
+      type: "string"
+version: '2'
+services:
+  artifactory:
+    scale: 1
+    start_on_create: true
+  nginx:
+    scale: 1
+    start_on_create: true
+
