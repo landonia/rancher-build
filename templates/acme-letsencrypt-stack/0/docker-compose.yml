@@ -6,6 +6,8 @@ services:
             - "80:80"
         volumes:
             - ${volume}:/usr/share/nginx/html
+        labels:
+            io.rancher.sidekicks: letsencrypt
     
     letsencrypt:
         image: quay.io/letsencrypt/letsencrypt
