@@ -6,7 +6,7 @@
   questions:
     - variable: "domain"
       description: "Domain name(s) to retrieve certificates. If multiple domains separate with -d. E.g. domain.com -d my.domain.com"
-      label: "Domain:"
+      label: "Domain(s):"
       required: true
       default: ""
       type: "string"
