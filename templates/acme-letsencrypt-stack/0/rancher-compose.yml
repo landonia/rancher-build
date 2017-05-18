@@ -12,7 +12,7 @@
       type: "string"
     - variable: "volume"
       description: "The path of the volume to store certificates"
-      lavel: "Volume:"
+      label: "Volume:"
       required: true
       default: ""
       type: "string"
