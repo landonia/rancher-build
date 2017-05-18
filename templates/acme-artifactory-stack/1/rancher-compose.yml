@@ -1,8 +1,8 @@
 .catalog:
   name: "Artifactory"
-  version: "v1.0"
+  version: "v1.1"
   description: "Artifactory build stack"
-  uuid: artifactory-stack-0
+  uuid: artifactory-stack-1
   questions:
     - variable: "artifactory_port"
       description: "Artifactory port to expose"
@@ -19,10 +19,11 @@ services:
     scale: 1
     start_on_create: true
     lb_config:
-      certs: []
+      certs:
+        - "artifactory-certificates"
       port_rules:
       - priority: 1
-        protocol: http
+        protocol: https
         service: artifactory
         source_port: ${artifactory_port}
         target_port: 8081

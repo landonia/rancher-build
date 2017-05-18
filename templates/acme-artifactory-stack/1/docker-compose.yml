@@ -1,0 +1,25 @@
+version: '2'
+services:
+    pub:
+        image: rancher/lb-service-haproxy:v0.6.4
+        ports:
+            - ${artifactory_port}:${artifactory_port}/tcp
+        labels:
+            io.rancher.container.agent.role: environmentAdmin
+            io.rancher.container.create_agent: 'true'
+            io.rancher.scheduler.global: 'true'
+    artifactory:
+        image: docker.bintray.io/jfrog/artifactory-pro:latest
+        stdin_open: true
+        tty: true
+        labels:
+            io.rancher.container.pull_image: always
+        volumes:
+            - afstore:/var/opt/jfrog/artifactory
+
+volumes:
+    afstore:
+        driver: rancher-ebs
+        driver_opts:
+            name: artifactory
+            size: 100
