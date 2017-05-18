@@ -11,3 +11,5 @@ services:
         volumes:
             - ${registryvolume}:/var/lib/registry
             - ${certsvolume}:/certs
+        labels:
+            io.rancher.container.start_once=true
