@@ -4,7 +4,7 @@
   description: "Let's Encrypt build stack"
   uuid: letsencrypt-stack-0
   questions:
-    - variable: "domain"
+    - variable: "domains"
       description: "Domain name(s) to retrieve certificates. If multiple domains separate with -d. E.g. domain.com -d my.domain.com"
       label: "Domain(s):"
       required: true
