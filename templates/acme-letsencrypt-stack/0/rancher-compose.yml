@@ -10,6 +10,12 @@
       required: true
       default: ""
       type: "string"
+    - variable: "store"
+      description: "The path of the volume to store certificates"
+      lavel: "Volume:"
+      required: true
+      default: ""
+      type: "string"
 version: '2'
 services:
   web:
