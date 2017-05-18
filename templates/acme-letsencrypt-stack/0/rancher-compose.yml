@@ -21,7 +21,7 @@ services:
   web:
     scale: 1
     start_on_create: true
-  ssl:
+  letsencrypt:
     scale: 1
     start_on_create: true
 

@@ -7,9 +7,9 @@ services:
         volumes:
             - ${volume}:/usr/share/nginx/html
     
-    ssl:
+    letsencrypt:
         image: quay.io/letsencrypt/letsencrypt
         volumes_from:
             - web
         command: certonly --agree-tos --webroot --webroot-path /usr/share/nginx/html -m certs@acmeticketing.com -d ${domains}
-
+        
