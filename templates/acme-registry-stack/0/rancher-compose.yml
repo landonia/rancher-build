@@ -16,6 +16,24 @@
       required: true
       default: ""
       type: "string"
+    - variable: "certpath"
+      description: "The path to the folder containing the certificates"
+      label: "Certificate folder"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "certname"
+      description: "The name of the certificate file"
+      label: "Certificate File Name:" 
+      required: true
+      default: "cert1.pem"
+      type: "string"
+    - variable: "keyname"
+      description: "The name of the key file"
+      label: "Key File Name:"
+      required: true
+      default: "privkey1.pem"
+      type: "string"
 version: '2'
 services:
   registry:

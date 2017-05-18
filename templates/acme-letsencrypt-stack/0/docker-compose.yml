@@ -6,6 +6,7 @@ services:
             - "80:80"
         volumes:
             - /usr/share/nginx/html
+            - ${volume}:/etc/letsencrypt/
         labels:
             io.rancher.sidekicks: letsencrypt
     
@@ -13,7 +14,6 @@ services:
         image: quay.io/letsencrypt/letsencrypt
         volumes_from:
             - web
-        volumes:
-            - ${volume}:/etc/letsencrypt/
         command: certonly --agree-tos --webroot --webroot-path /usr/share/nginx/html -m certs@acmeticketing.com -d ${domains}
-        
+        labels:
+            io.rancher.container.start_once=true
