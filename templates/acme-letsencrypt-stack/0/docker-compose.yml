@@ -5,7 +5,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - lestore:/usr/share/nginx/html
+            - ${volume}:/usr/share/nginx/html
     
     ssl:
         image: quay.io/letsencrypt/letsencrypt
