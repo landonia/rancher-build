@@ -1,0 +1,23 @@
+.catalog:
+  name: "Docker Registry"
+  version: "v1.0"
+  description: "Create a docker registry stack"
+  uuid: docker-registry-stack-0
+  questions:
+    - variable: "registryvolume"
+      description: "The registry storage volume"
+      label: "Registry Volume:"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "certsvolume"
+      description: "The volume containing the certs"
+      lavel: "Certs Volume:"
+      required: true
+      default: ""
+      type: "string"
+version: '2'
+services:
+  registry:
+    scale: 1
+    start_on_create: true
