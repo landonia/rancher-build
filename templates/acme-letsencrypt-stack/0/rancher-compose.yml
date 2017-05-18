@@ -1,0 +1,21 @@
+.catalog:
+  name: "Let's Encrypt"
+  version: "v1.0"
+  description: "Let's Encrypt build stack"
+  uuid: letsencrypt-stack-0
+  questions:
+    - variable: "domain"
+      description: "Domain name to retrieve certificates"
+      label: "Domain:"
+      required: true
+      default: ""
+      type: "string"
+version: '2'
+services:
+  web:
+    scale: 1
+    start_on_create: true
+  ssl:
+    scale: 1
+    start_on_create: true
+

@@ -1,0 +1,21 @@
+version: '2'
+services:
+    web:
+        image: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - lestore:/usr/share/nginx/html
+    
+    ssl:
+        image: quay.io/letsencrypt/letsencrypt
+        volumes_from:
+            - web
+        command: certonly --agree-tos --webroot --webroot-path /usr/share/nginx/html -m certs@acmeticketing.com -d ${domain}
+
+volumes:
+    lestore:
+        driver: rancher-ebs
+        driver_opts:
+            name: lets-encrypt-ssl-store
+            size: 10

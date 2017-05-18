@@ -1,0 +1,4 @@
+name: "ACME Let's Encrypt"
+description: "Will wait on port 80 to retrieve Let's Encrypt handshakes to retrieve certificates for the domain mapped"
+version: "v1.0"
+category: "SSL services"
