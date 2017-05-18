@@ -12,7 +12,7 @@
       type: "string"
     - variable: "certsvolume"
       description: "The volume containing the certs"
-      lavel: "Certs Volume:"
+      label: "Certs Volume:"
       required: true
       default: ""
       type: "string"
